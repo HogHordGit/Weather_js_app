@@ -1,0 +1,76 @@
+@use "../../presets" as *;
+@use "../../mixins" as *;
+
+.weather {
+    padding-top: 178px;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    &__inner {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__temperature {
+        margin: 0;
+        font-size: 180px;
+        color: var(--color-white);
+    }
+    &__units {
+        position: absolute;
+        top: 13px;
+        right: -30px;
+        font-size: 65px;
+        color: var(--color-white);
+    }
+    &__icon {
+        width: 138px;
+        height: 138px;
+    }
+    &__description {
+        font-size: 25px;
+        line-height: 30px;
+        text-align: center;
+        color: var(--color-white);
+    }
+}
+
+.weather-info {
+    padding-top: 218px;
+    padding-bottom: 122px;
+    align-self: normal;
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    &__item span {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px;
+        line-height: 22px;
+        color: var(--color-white);
+        opacity: 0.6;
+    }
+    &__item p {
+        margin: 0;
+        font-size: 25px;
+        line-height: 30px;
+        color: var(--color-white);
+    }
+}
