@@ -4,6 +4,10 @@
 .weather {
     padding-top: 178px;
 
+    @media (max-width: 470px) {
+        padding-top: 60px;
+    }
+
     &__container {
         display: flex;
         flex-direction: column;
@@ -20,6 +24,10 @@
         margin: 0;
         font-size: 180px;
         color: var(--color-white);
+
+        @media (max-width: 470px) {
+            font-size: 120px;
+        }
     }
     &__units {
         position: absolute;
@@ -31,6 +39,11 @@
     &__icon {
         width: 138px;
         height: 138px;
+
+        @media (max-width: 470px) {
+            width: 80px;
+            height: 80px;
+        }
     }
     &__description {
         font-size: 25px;
@@ -45,20 +58,46 @@
     padding-bottom: 122px;
     align-self: normal;
 
+    @media (max-width: 750px) {
+        padding-top: 100px;
+        padding-bottom: 20px;
+    }
+
     &__list {
         margin: 0;
         padding: 0;
         width: 100%;
         list-style-type: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        display: grid;
+
+        grid-template-areas: "a1 a2 a3 a4";
+
+        @media (max-width: 800px) {
+            grid-template-areas: "a1 a2"
+                                 "a3 a4";
+            gap: 20px;
+        }
+
+        @media (max-width: 500px) {
+            grid-template-areas: "a1"
+                                 "a2"
+                                 "a3"
+                                 "a4";
+            gap: 20px;
+        }
     }
     &__item {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-    }
+        text-align: center;
+
+        &:not(:last-child) {
+            @media (max-width: 750px) {
+                margin-bottom: 25px;
+            }
+        }
+    }   
     &__item span {
         display: block;
         margin-bottom: 10px;
@@ -72,5 +111,11 @@
         font-size: 25px;
         line-height: 30px;
         color: var(--color-white);
+    }
+}
+
+@for $i from 1 through 9 {
+    .weather-info__list:nth-of-type(#{$i}) {
+      grid-area: a#{$i};
     }
 }

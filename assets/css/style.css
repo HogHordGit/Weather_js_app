@@ -429,21 +429,15 @@ body {
   padding-bottom: 122px;
 }
 .weather-info__list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -ms-flex-align: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  display: grid;
 
   width: 100%;
   margin: 0;
   padding: 0;
 
   list-style-type: none;
+
+  grid-template-areas: "a1 a2 a3 a4";
 }
 .weather-info__item {
   display: -webkit-box;
@@ -456,6 +450,8 @@ body {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+
+  text-align: center;
 }
 .weather-info__item span {
   display: block;
@@ -475,4 +471,98 @@ body {
 
   font-size: 25px;
   line-height: 30px;
+}
+
+.weather-info__list:nth-of-type(1) {
+  grid-area: a1;
+}
+
+.weather-info__list:nth-of-type(2) {
+  grid-area: a2;
+}
+
+.weather-info__list:nth-of-type(3) {
+  grid-area: a3;
+}
+
+.weather-info__list:nth-of-type(4) {
+  grid-area: a4;
+}
+
+.weather-info__list:nth-of-type(5) {
+  grid-area: a5;
+}
+
+.weather-info__list:nth-of-type(6) {
+  grid-area: a6;
+}
+
+.weather-info__list:nth-of-type(7) {
+  grid-area: a7;
+}
+
+.weather-info__list:nth-of-type(8) {
+  grid-area: a8;
+}
+
+.weather-info__list:nth-of-type(9) {
+  grid-area: a9;
+}
+
+@media (max-width: 800px) {
+  .weather-info__list {
+    gap: 20px;
+    grid-template-areas: "a1 a2" "a3 a4";
+  }
+}
+
+@media (max-width: 750px) {
+  .search_input {
+    width: 280px;
+  }
+  .weather-info {
+    padding-top: 100px;
+    padding-bottom: 20px;
+  }
+  .weather-info__item:not(:last-child) {
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 500px) {
+  .weather-info__list {
+    gap: 20px;
+    grid-template-areas: "a1" "a2" "a3" "a4";
+  }
+}
+
+@media (max-width: 470px) {
+  .header__container {
+    -webkit-box-align: start;
+    align-items: start;
+    -ms-flex-align: start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+        flex-direction: column;
+  }
+  .header__city {
+    margin-bottom: 30px;
+  }
+  .city__change {
+    margin-bottom: 15px;
+  }
+  .search_input {
+    width: 220px;
+  }
+  .weather {
+    padding-top: 60px;
+  }
+  .weather__temperature {
+    font-size: 120px;
+  }
+  .weather__icon {
+    width: 80px;
+    height: 80px;
+  }
 }
