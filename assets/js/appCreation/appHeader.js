@@ -1,3 +1,7 @@
+import { getUserLocation } from "../geolocation.js";
+import { getData } from "../request.js";
+import { resetWeatherContent, fToC, cToF } from "../helper.js";
+
 export const createHeader = (city) => {
     const header = document.createElement('header');
     const headerContainer = document.createElement('div');
@@ -35,6 +39,73 @@ export const createHeader = (city) => {
     cityLocation.textContent = 'My location';
     unitsC.textContent = 'C';
     unitsF.textContent = 'F';
+
+    cityChange.addEventListener("click", () => {
+        headerCity.innerHTML = "";
+
+        searchBlock.append(searchInput, searchBtn, errorBlock);
+        headerCity.append(searchBlock);
+    });
+    cityLocation.addEventListener("click", getUserLocation);
+
+    const showError = (message) => {
+
+        errorBlock.classList.add("show-error");
+        errorBlock.textContent = message;
+    };
+
+    searchBtn.addEventListener("click", async () => {
+        if (!searchInput.value) return;
+
+        const weather = await getData(searchInput.value).catch(console.log);
+
+        if (weather.message) {showError(weather.message); return;}
+
+        resetWeatherContent(weather.name, weather);
+    });
+
+    unitsC.addEventListener("click", () => {
+        const CLASS = "unit-curren";
+
+        if (unitsC.classList.contains(CLASS)) return;
+        
+        unitsC.classList.add(CLASS);
+        unitsF.classList.remove(CLASS);
+
+        document.querySelector(".weather__units").textContent = "o";
+        const temperature = document.querySelector("weather__temperature");
+
+        const convertedTemp = fToC(+temperature.textContent);
+        temperature.textContent = Math.round(convertedTemp);
+    });
+
+    unitsC.addEventListener('click', () => {
+        if(unitsC.classList.contains('unit-current')) {
+            return;
+        }
+
+        unitsC.classList.add('unit-current');
+        unitsF.classList.remove('unit-current');
+        document.querySelector('.weather__units').textContent = 'o';
+
+        const temperature = document.querySelector('.weather__temperature');
+        const convertedTemp = fToC(+temperature.textContent);
+        temperature.textContent = Math.round(convertedTemp);
+    });
+
+    unitsF.addEventListener('click', () => {
+        if(unitsF.classList.contains('unit-current')) {
+            return;
+        }
+
+        unitsF.classList.add('unit-current');
+        unitsC.classList.remove('unit-current');
+        document.querySelector('.weather__units').textContent = 'f';
+
+        const temperature = document.querySelector('.weather__temperature');
+        const convertedTemp = cToF(+temperature.textContent);
+        temperature.textContent = Math.round(convertedTemp);
+    });
 
     header.append(headerContainer);
     headerContainer.append(headerCity, headerUnits);

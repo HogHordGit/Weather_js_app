@@ -4,7 +4,7 @@ import { createContent } from "./appCreation/appContent.js";
 
 const app = async function() {
 
-    const weather = await getData("Киев");
+    const weather = await getData(JSON.parse(localStorage.getItem("city")) || "Odesa").catch(console.log);
 
     const header = createHeader(weather.name);
     const content = createContent(weather);

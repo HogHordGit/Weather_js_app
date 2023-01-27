@@ -1,3 +1,6 @@
+import { createHeader } from "./appCreation/appHeader.js";
+import { createContent } from "./appCreation/appContent.js";
+
 export const directionOfWind = (degree) => {
 
     if ((degree>337.5 && degree<360)|| (degree>22.5 && degree<22.5))
@@ -14,4 +17,25 @@ export const directionOfWind = (degree) => {
 
 export const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+export const resetWeatherContent = (city, weather) => {
+
+    localStorage.setItem("city", JSON.stringify(city));
+
+    document.body.innerHTML = "";
+
+    const header = createHeader(city);
+    const content = createContent(weather);
+
+    document.body.append(header);
+    document.body.append(content);
+};
+
+export const cToF = (value) => {
+    return value * 9 / 5 + 32;
+};
+
+export const fToC = (value) => {
+    return (value - 32) * 5 / 9;
 };
