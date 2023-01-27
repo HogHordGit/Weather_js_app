@@ -39,3 +39,13 @@ export const cToF = (value) => {
 export const fToC = (value) => {
     return (value - 32) * 5 / 9;
 };
+
+export const withoutInterner = () => {
+
+    const div = document.createElement("div");
+    div.innerHTML = "404 <br> Error connecting to the server <br> Try again later";
+    div.classList.add("error-block");
+
+    return div;
+
+};

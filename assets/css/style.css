@@ -509,10 +509,40 @@ body {
   grid-area: a9;
 }
 
+.error-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+
+  min-height: 100vh;
+
+  text-align: center;
+
+  color: white;
+}
+
+@media (min-width: 767px) {
+  .error-block {
+    font-size: calc(25px + 20 * (100vw / 1440));
+  }
+}
+
 @media (max-width: 800px) {
   .weather-info__list {
     gap: 20px;
     grid-template-areas: "a1 a2" "a3 a4";
+  }
+}
+
+@media (max-width: 767px) {
+  .error-block {
+    font-size: calc(25px + 20 * ((100vw - 320px) / 1440));
   }
 }
 

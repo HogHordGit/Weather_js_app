@@ -119,3 +119,13 @@
       grid-area: a#{$i};
     }
 }
+
+.error-block {
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    @include adaptive_font(45, 25);
+}

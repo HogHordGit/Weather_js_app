@@ -1,14 +1,16 @@
 @use "../presets" as *;
 
+$maxWidth: 1440;
+
 @mixin adaptive_font ($pcSize, $mobSize) {
-  $addSize: $pcSize - $mobSize;
-  $addMobSize: $addSize + $addSize * 0.7;
-  @media (min-width: 767px) {
-     font-size: calc((#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth})));
-  }
-  @media (max-width: 767px) {
-     font-size: calc((#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth})));
-  }
+     $addSize: $pcSize - $mobSize;
+     $addMobSize: $addSize + $addSize * 0.7;
+     @media (min-width: 767px) {
+        font-size: calc((#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth})));
+     }
+     @media (max-width: 767px) {
+        font-size: calc((#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth})));
+     }
 }
 
 @mixin adaptive_line-height($lineHeight, $fontSize) {
