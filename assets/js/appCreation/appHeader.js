@@ -107,6 +107,17 @@ export const createHeader = (city) => {
         temperature.textContent = Math.round(convertedTemp);
     });
 
+    window.addEventListener("click", e => {
+        const target = e.target;
+
+        if (target === searchInput || target === searchBtn || target === cityChange) return;
+        
+        headerCity.innerHTML = "";
+        errorBlock.classList.remove("show-error");
+        searchInput.value = "";
+        headerCity.append(cityName, cityInner);
+    });
+
     header.append(headerContainer);
     headerContainer.append(headerCity, headerUnits);
     cityInner.append(cityChange, cityLocation);
